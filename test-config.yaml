@@ -1,0 +1,27 @@
+# 测试配置文件
+# 用于本地测试日志监控功能
+
+# 监控的日志文件列表
+log_files:
+  # 测试日志文件
+  - path: "/Users/echo.yan/GolandProjects/log- monitor/test.log"
+    keywords:
+      - "ERROR"
+      - "FATAL"
+      - "Exception"
+      - "panic"
+      - "failed"
+    enabled: true
+
+# 通知器配置（测试用）
+notifiers:
+  # 飞书机器人（请替换为真实的webhook地址）
+  - type: "feishu"
+    webhook: "https://open.feishu.cn/open-apis/bot/v2/hook/your-test-webhook-url"
+    enabled: false  # 测试时可以先关闭，避免发送真实消息
+
+  # 钉钉机器人（请替换为真实的webhook地址）
+  - type: "dingtalk"
+    webhook: "https://oapi.dingtalk.com/robot/send?access_token=your-test-access-token"
+    secret: "your-test-secret-key"
+    enabled: false  # 测试时可以先关闭，避免发送真实消息

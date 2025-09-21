@@ -1,0 +1,21 @@
+# 日志哨兵目录监控测试配置
+
+# 监控的日志目录列表
+log_directories:
+  # 测试目录（递归监控）
+  - path: "./test-logs"
+    keywords:
+      - "ERROR"
+      - "FATAL"
+      - "Exception"
+    extensions: [".log", ".txt"]
+    recursive: true
+    exclude_dirs: ["backup"]
+    enabled: true
+
+# 通知器配置
+notifiers:
+  # 飞书机器人
+  - type: "feishu"
+    webhook: "https://open.feishu.cn/open-apis/bot/v2/hook/your-webhook-url"
+    enabled: true

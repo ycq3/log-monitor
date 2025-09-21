@@ -27,6 +27,31 @@ log_files:
       - "emerg"
     enabled: false
 
+# 监控的日志目录列表（新功能）
+log_directories:
+  # 应用日志目录（递归监控）
+  - path: "/var/log/apps"
+    keywords:
+      - "ERROR"
+      - "FATAL"
+      - "Exception"
+      - "panic"
+    extensions: [".log", ".txt"]
+    recursive: true
+    exclude_dirs: ["backup", "archive", "temp"]
+    enabled: true
+
+  # 用户日志目录（非递归监控）
+  - path: "/home/user/logs"
+    keywords:
+      - "error"
+      - "fail"
+      - "timeout"
+    extensions: [".log"]
+    recursive: false
+    exclude_dirs: []
+    enabled: false
+
 # 通知器配置
 notifiers:
   # 飞书机器人
